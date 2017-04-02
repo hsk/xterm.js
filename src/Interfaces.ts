@@ -6,9 +6,9 @@ import { LinkMatcherOptions } from './Interfaces';
 import { LinkMatcherHandler, LinkMatcherValidationCallback } from './Types';
 
 export interface IBrowser {
-  isNode: boolean;
-  userAgent: string;
-  platform: string;
+//  isNode: boolean;
+//  userAgent: string;
+//  platform: string;
   isFirefox: boolean;
   isMSIE: boolean;
   isMac: boolean;
@@ -41,7 +41,7 @@ export interface ITerminal {
    */
   handler(data: string);
   on(event: string, callback: () => void);
-  scrollDisp(disp: number, suppressScrollEvent: boolean);
+  scrollDisp(disp: number, suppressScrollEvent?: boolean);
   cancel(ev: Event, force?: boolean);
   log(text: string): void;
   emit(event: string, data: any);
@@ -60,7 +60,7 @@ export interface ILinkifier {
   deregisterLinkMatcher(matcherId: number): boolean;
 }
 
-interface ICircularList<T> {
+export interface ICircularList<T> {
   length: number;
   maxLength: number;
 

@@ -8,7 +8,7 @@ interface ListenerType {
 };
 
 export class EventEmitter {
-  private _events: {[type: string]: ListenerType[]};
+  public _events: {[type: string]: ListenerType[]};
 
   constructor() {
     // Restore the previous events if available, this will happen if the
@@ -53,12 +53,11 @@ export class EventEmitter {
     return this.on(type, on);
   }
 
-  public emit(type): void {
+  public emit(type,...args:any[]): void {
     if (!this._events[type]) {
       return;
     }
 
-    let args = Array.prototype.slice.call(arguments, 1);
     let obj = this._events[type];
 
     for (let i = 0; i < obj.length; i++) {
